@@ -1,7 +1,15 @@
 html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+
+}
+
+.body{
     display: flex;
     justify-content: center;
 }
+
 .picture {
     height: 500px;
     width: 500px;
@@ -9,4 +17,8 @@ html {
 
 .text {
     display: block;
+}
+
+.america {
+    color: red;
 }
