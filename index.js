@@ -55,10 +55,19 @@ const updateThatDom = (peep) => {
     setInnerHtml(document.getElementsByClassName("text")[0], peep.text);
 };
 
-
 const time$ = Rx.Observable.interval(1000);
-time$
-    .zip(peeps$(), (time, peep) => peep)
-    .repeat()
-    .startWith(america)
-    .subscribe((peep) => updateThatDom(peep));
+
+const pictureTimeStream = () => {
+    return time$
+        .zip(peeps$(), (time, peep) => peep)
+        .startWith(america)
+};
+
+pictureTimeStream()
+    .subscribe(
+        (peep) => updateThatDom(peep),
+        () => {
+        },
+        (() => pictureTimeStream$.subscribe(
+            (peep) => updateThatDom(peep)
+        )));
